@@ -8,7 +8,6 @@ public class PRemindApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PRemindApplication.class, args);
-		System.out.println("jg");
 	}
 
 }

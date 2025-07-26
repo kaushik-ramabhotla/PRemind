@@ -1,0 +1,20 @@
+github:
+  api:
+    repos:
+      url: https://api.github.com/orgs/kaushik-ramabhotla/repos
+
+spring:
+  data:
+    mongodb:
+      auto-index-creation: true
+      database: PRemind
+      uri: mongodb+srv://kaushik:kaushik@cluster0.roqyrju.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
