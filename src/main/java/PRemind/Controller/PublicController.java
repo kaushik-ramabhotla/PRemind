@@ -33,7 +33,7 @@ public class PublicController {
     @PostMapping("/login")
     public ResponseEntity<String> signIn(@RequestBody User user){
         try {
-            userService.signUp(user);
+            //userService.signUp(user);
             return new ResponseEntity<>("User "+user.getUsername()+" created Successfully", HttpStatus.CREATED);
             //JWT Implementation
         }

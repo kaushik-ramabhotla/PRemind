@@ -1,30 +1,47 @@
 package PRemind.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Data
-@Getter
-@Setter
 @Document(collection = "users")
 public class User {
 
     @Id
-    private Long id;
+    private String id;
 
-    public Long getId() {
+    @NonNull
+    @Indexed(unique = true)
+    private String username;
+
+    @NonNull
+    private String password;
+
+    @NonNull
+    @JsonProperty("gitToken")
+    private String gitToken;
+
+    private List<String> Roles;
+    private List<PullRequest> listOfPRs;
+
+
+
+    //Getters & Setters
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -44,12 +61,12 @@ public class User {
         this.password = password;
     }
 
-    public String getGIT_TOKEN() {
-        return GIT_TOKEN;
+    public String getGitToken() {
+        return gitToken;
     }
 
-    public void setGIT_TOKEN(String GIT_TOKEN) {
-        this.GIT_TOKEN = GIT_TOKEN;
+    public void setGitToken(String gitToken) {
+        this.gitToken = gitToken;
     }
 
     public List<String> getRoles() {
@@ -67,16 +84,4 @@ public class User {
     public void setListOfPRs(List<PullRequest> listOfPRs) {
         this.listOfPRs = listOfPRs;
     }
-
-    @NonNull
-    private String username;
-
-    @NonNull
-    private String password;
-
-    @NonNull
-    private String GIT_TOKEN;
-
-    private List<String> Roles;
-    private List<PullRequest> listOfPRs;
 }
